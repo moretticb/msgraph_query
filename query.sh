@@ -16,14 +16,17 @@ api_link="${api_link/TODAY_PLUS_10/$(date -v "+10d" "+%Y-%m-%dT23:59:59.000Z")}"
 tokenfile="/tmp/msgtoken"
 tokenout="/tmp/msgraph.json"
 
-[ ! -e $tokenfile ] && poetry run python auth.py > $tokenfile
+if [ ! -e $tokenfile ]; then
+	poetry run python auth.py > $tokenfile
+	[ "$?" != "0" ] && exit 1 
+fi  
 ACCESS_TOKEN="$(cat $tokenfile)"
 
 response="$(curl $api_link -H "Authorization: Bearer $ACCESS_TOKEN" -H "x-ms-version: 2019-02-02" 2>/dev/null 3>/dev/null)"
 
-echo "LINK IS $api_link" >> /tmp/debug.txt
-echo "RESPONSE IS $response" >> /tmp/debug.txt
-echo "---" >> /tmp/debug.txt
+#echo "LINK IS $api_link" >> /tmp/debug.txt
+#echo "RESPONSE IS $response" >> /tmp/debug.txt
+#echo "---" >> /tmp/debug.txt
 
 
 if [ $(echo "$response" | head -1 | grep error | wc -l) = 1 ]; then

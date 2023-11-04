@@ -36,6 +36,7 @@ client = ConfidentialClientApplication(
 auth_url = client.get_authorization_request_url(SCOPES)
 
 
+delay = 15
 if Path(USER_DATA_FOLDER).is_dir():
     options = webdriver.ChromeOptions()
     options.add_argument(f"--user-data-dir={USER_DATA_FOLDER}")
@@ -47,10 +48,15 @@ else:
     options.add_argument(f"--user-data-dir={USER_DATA_FOLDER}")
 
     driver = viswebdriver.Chrome(options=options)
+    delay = 120
 
 
 driver.get(auth_url)
-WebDriverWait(driver, 15).until(EC.url_matches("code="))
+try:
+    WebDriverWait(driver, delay).until(EC.url_matches("code="))
+except:
+    raise Exception(f"Unable to authenticate. Remove {USER_DATA_FOLDER} folder and try again.")
+    
 
 url = driver.current_url
 
