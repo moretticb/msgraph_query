@@ -18,7 +18,7 @@ Go through the steps below to have the scripts running properly:
 - Set `MSG_CLIENT_SECRET`, `MSG_APP_ID` and `MSG_TENANT_ID` environment variables wrt your app and domain.
 - Install Python Poetry and Google Chrome driver and jq.
 - Clone this repo and run `poetry install` to have all packages installed.
-- Consent to permissions in the [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) by clicking on your user icon, then *Consent to permissions*.
+- Consent to permissions in the [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) by clicking on your user avatar, then *Consent to permissions*. Follow this [tutorial](https://www.youtube.com/watch?v=f_3wc4UgqTI) for more information.
     - Be conservative and only consent to **read** permissions. Consent to other privileges at your own risk.
     - Once you decided which permissions to consent to, update `SCOPES` array in `auth.py` accordingly.
 
@@ -55,7 +55,7 @@ $ ./query.sh MSGRAPH_URL JQ_QUERY
 
 where:
 
-- `MSGRAPH_URL` is the url to the MS Graph API. Use the Graph Explorer as a playground to find out about everything you can retrieve and to craft your final url. Then, use it here.
+- `MSGRAPH_URL` is the url to the MS Graph API. Use the Graph Explorer and play around with the possible example requests. Then, craft your final url and use it here.
 - `JQ_QUERY` is the `jq` query to navigate the API output, since it outputs JSON.
 
 It outputs an object in **javascript syntax, not JSON**. If you would rather have JSON, remove all the `sed` find-replace commands in `query.sh` and adapt it to your taste.
