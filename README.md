@@ -18,7 +18,9 @@ Go through the steps below to have the scripts running properly:
 - Set `MSG_CLIENT_SECRET`, `MSG_APP_ID` and `MSG_TENANT_ID` environment variables wrt your app and domain.
 - Install Python Poetry and Google Chrome driver and jq.
 - Clone this repo and run `poetry install` to have all packages installed.
-- Consent to permissions in the [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) by clicking on your user icon, then *Consent to permissions*. Be conservative and only consent to **read** permissions. Consent to other privileges at your own risk.
+- Consent to permissions in the [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) by clicking on your user icon, then *Consent to permissions*.
+    - Be conservative and only consent to **read** permissions. Consent to other privileges at your own risk.
+    - Once you decided which permissions to consent to, update `SCOPES` array in `auth.py` accordingly.
 
 
 ## App registration
