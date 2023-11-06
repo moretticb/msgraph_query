@@ -58,7 +58,6 @@ where:
 - `MSGRAPH_URL` is the url to the MS Graph API. Use the Graph Explorer and play around with the possible example requests. Then, craft your final url and use it here.
 - `JQ_QUERY` is the `jq` query to navigate the API output, since it outputs JSON.
 
-It outputs an object in **javascript syntax, not JSON**. If you would rather have JSON, remove all the `sed` find-replace commands in `query.sh` and adapt it to your taste.
 
 Check and run `example_cmd.sh` to see a working example.
 

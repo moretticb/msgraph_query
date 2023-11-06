@@ -40,7 +40,7 @@ else
 		# skipping first argument (the api url)
 		[ "$q" = "$1" ] && continue
 
-		cat $tokenout | /opt/homebrew/bin/jq -r "$q" | sed -E 's/"([^"]+)":/\1:/g' | sed -E "s/^[[:space:]]+[@]*//g" | sed -E "s/([a-zA-Z_0-9]+)[.]([a-zA-Z_0-9]+):/\1\2:/g" | tr -d "\n"
+		cat $tokenout | /opt/homebrew/bin/jq -r "$q" #| sed -E 's/"([^"]+)":/\1:/g' | sed -E "s/^[[:space:]]+[@]*//g" | sed -E "s/([a-zA-Z_0-9]+)[.]([a-zA-Z_0-9]+):/\1\2:/g" | tr -d "\n"
 		exit 0 #only one command for now
 	done
 fi
